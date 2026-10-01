@@ -61,6 +61,13 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
 }
+
+.page--locked {
+  position: fixed;
+  width: 100%;
+  overflow-y: scroll;
+}
+
 /*
   Задаём внутренние отступы для основных областей страницы.
   Это делает содержимое визуально отделённым от краёв окна браузера.
@@ -190,8 +197,17 @@ a:focus-visible {
   border-color: var(--color-primary);
 }
 
-.product-card h3 {
-  margin-top: 0;
+.product-card__title {
+  margin: 0 0 var(--space-sm);
+}
+
+.product-card__description {
+  margin: 0 0 var(--space-sm);
+}
+
+.product-card__price {
+  margin: 0 0 var(--space-md);
+  font-weight: bold;
 }
 
 /*
@@ -315,5 +331,11 @@ a:focus-visible {
   border-left: 4px solid var(--color-success);
   background-color: var(--color-success-bg);
 }
-
+.scroll-top {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
 

@@ -10,6 +10,31 @@ const closeDialogButton = document.getElementById('close-order-dialog');
 // Получаем скрытое поле, в которое будет записан выбранный товар.
 const selectedProductInput = document.getElementById('selected-product');
 
+// Получаем кнопку возврата наверх.
+const scrollTopButton = document.getElementById('scroll-top');
+
+// Запоминаем положение страницы перед открытием окна.
+let pageScrollPosition = 0;
+
+// Фиксируем страницу и запрещаем прокрутку фона.
+const lockPageScroll = () => {
+  pageScrollPosition = window.scrollY;
+  document.body.style.top = `-${pageScrollPosition}px`;
+  document.body.classList.add('page--locked');
+};
+
+// Возвращаем прокрутку после закрытия окна.
+const unlockPageScroll = () => {
+  document.body.classList.remove('page--locked');
+  document.body.style.top = '';
+  window.scrollTo(0, pageScrollPosition);
+};
+
+// Показываем кнопку наверх после прокрутки страницы.
+const updateScrollTopButton = () => {
+  scrollTopButton.hidden = window.scrollY < 300;
+};
+
 // Перебираем все кнопки «Заказать».
 orderButtons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -21,6 +46,9 @@ orderButtons.forEach((button) => {
 
     // Открываем модальное окно.
     orderDialog.showModal();
+
+    // Запрещаем прокрутку фоновой страницы.
+    lockPageScroll();
   });
 });
 
@@ -28,6 +56,24 @@ orderButtons.forEach((button) => {
 closeDialogButton.addEventListener('click', () => {
   orderDialog.close();
 });
+
+// Возвращаем прокрутку при любом способе закрытия окна.
+orderDialog.addEventListener('close', unlockPageScroll);
+
+// Следим за прокруткой страницы.
+window.addEventListener('scroll', updateScrollTopButton);
+
+// Плавно прокручиваем страницу наверх.
+scrollTopButton.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  });
+});
+
+// Устанавливаем правильное состояние кнопки при загрузке страницы.
+updateScrollTopButton();
+
 // Получаем форму заявки.
 const orderForm = document.getElementById('order-form');
 
