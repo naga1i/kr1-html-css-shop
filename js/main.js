@@ -27,7 +27,7 @@ const lockPageScroll = () => {
 const unlockPageScroll = () => {
   document.body.classList.remove('page--locked');
   document.body.style.top = '';
-  window.scrollTo(0, pageScrollPosition);
+  window.scrollTo({ top: pageScrollPosition, behavior: 'instant' });
 };
 
 // Показываем кнопку наверх после прокрутки страницы.
