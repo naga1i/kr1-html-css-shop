@@ -119,6 +119,8 @@ footer {
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: var(--space-md);
   margin: 0;
   padding: 0;
@@ -129,16 +131,20 @@ footer {
   Оформляем ссылки меню.
 */
 .site-nav__list a {
-  color: #0057b8;
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-primary);
   text-decoration: none;
+  border-radius: var(--radius-sm);
 }
 
 /*
-  При наведении мыши подчёркиваем ссылку.
+  При наведении мыши подсвечиваем ссылку фоном.
   Подробно состояния интерфейса будут рассмотрены в практической работе 1.7.
 */
 .site-nav__list a:hover {
-  text-decoration: underline;
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 /* ===============================
    3. Общие элементы интерфейса
@@ -185,16 +191,19 @@ a:focus-visible {
 /*
   Сетка карточек товаров через CSS Grid.
 */
-.product-grid {
+.products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--space-md);
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
 }
 
 /*
   Карточка товара — самостоятельный блок.
 */
 .product-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -205,17 +214,22 @@ a:focus-visible {
   border-color: var(--color-primary);
 }
 
-.product-card__title {
-  margin: 0 0 var(--space-sm);
-}
-
-.product-card__description {
-  margin: 0 0 var(--space-sm);
+.product-card__title,
+.product-card__description,
+.product-card__price {
+  margin: 0;
 }
 
 .product-card__price {
-  margin: 0 0 var(--space-md);
   font-weight: bold;
+}
+
+/*
+  Кнопка прижимается к низу карточки.
+*/
+.product-card .button {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 /*
@@ -346,4 +360,100 @@ a:focus-visible {
   bottom: var(--space-lg);
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.scroll-top[hidden] {
+  display: none;
+}
+
+/* ===============================
+   6. Многостраничная навигация
+   =============================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+}
+
+.breadcrumbs span::before {
+  content: " / ";
+  color: var(--color-muted);
+}
+
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+}
+
+/* ===============================
+   7. Страница каталога
+   =============================== */
+
+.catalog-layout {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-areas: "filters products";
+  gap: var(--space-lg);
+}
+
+.catalog-filters {
+  grid-area: filters;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.catalog-filters h2,
+.catalog-products h2 {
+  margin-top: 0;
+}
+
+.catalog-products {
+  grid-area: products;
+}
+
+.filters-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.filters-form fieldset {
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.filters-form legend {
+  font-weight: 700;
+}
+
+.filters-form label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.filters-form input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
+}
+
+.filters-form .button {
+  justify-self: start;
 }
