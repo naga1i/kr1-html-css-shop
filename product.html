@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Карточка товара учебного интернет-магазина.">
-  <title>Товар 1 — Учебный интернет-магазин</title>
+  <title>Беспроводные наушники SoundMax — Учебный интернет-магазин</title>
   <link rel="stylesheet" href="css/style.css">
+  <script src="js/product.js" defer></script>
 </head>
 <body class="page">
   <header class="site-header">
@@ -30,19 +31,19 @@
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
       <a class="breadcrumbs__link breadcrumbs__link--inner" href="catalog.html">Каталог</a>
-      <span class="breadcrumbs__current">Товар 1</span>
+      <span class="breadcrumbs__current" id="product-breadcrumb">Беспроводные наушники SoundMax</span>
     </nav>
 
     <section class="product">
-      <img class="product__image" src="images/product-1.svg" alt="Изображение товара 1" width="400" height="300">
+      <img class="product__image" id="product-image" src="images/headphones.jpg" alt="Беспроводные наушники SoundMax" width="600" height="450">
 
       <div class="product__info">
-        <h1 class="product__title">Товар 1</h1>
-        <p class="product__description">
-          Подробное описание учебного товара. Здесь указываются его
-          особенности, назначение и преимущества.
+        <h1 class="product__title" id="product-title">Беспроводные наушники SoundMax</h1>
+        <p class="product__description" id="product-description">
+          Закрытые беспроводные наушники с мягкими амбушюрами
+          и чистым звуком. До 30 часов работы без подзарядки.
         </p>
-        <p class="product__price">Цена: 1000 руб.</p>
+        <p class="product__price" id="product-price">Цена: 4990 руб.</p>
         <a class="button button--primary" href="order.html">Оформить заявку</a>
       </div>
     </section>
@@ -59,15 +60,15 @@
         <tbody>
           <tr>
             <td class="product-table__cell">Категория</td>
-            <td class="product-table__cell">Учебный товар</td>
+            <td class="product-table__cell" id="product-category">Наушники</td>
           </tr>
           <tr>
             <td class="product-table__cell">Цена</td>
-            <td class="product-table__cell">1000 руб.</td>
+            <td class="product-table__cell" id="product-table-price">4990 руб.</td>
           </tr>
           <tr>
             <td class="product-table__cell">Наличие</td>
-            <td class="product-table__cell">В наличии</td>
+            <td class="product-table__cell" id="product-availability">В наличии</td>
           </tr>
         </tbody>
       </table>
@@ -80,22 +81,22 @@
           <thead>
             <tr>
               <th class="product-table__cell product-table__cell--head" scope="col">Параметр</th>
-              <th class="product-table__cell product-table__cell--head" scope="col">Товар 1</th>
-              <th class="product-table__cell product-table__cell--head" scope="col">Товар 2</th>
-              <th class="product-table__cell product-table__cell--head" scope="col">Товар 3</th>
+              <th class="product-table__cell product-table__cell--head" scope="col">Беспроводные наушники SoundMax</th>
+              <th class="product-table__cell product-table__cell--head" scope="col">Смартфон Nova X</th>
+              <th class="product-table__cell product-table__cell--head" scope="col">Умные часы Pulse</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <th class="product-table__cell product-table__cell--head" scope="row">Цена</th>
-              <td class="product-table__cell">1000 руб.</td>
-              <td class="product-table__cell">1500 руб.</td>
-              <td class="product-table__cell">2000 руб.</td>
+              <td class="product-table__cell">4990 руб.</td>
+              <td class="product-table__cell">24990 руб.</td>
+              <td class="product-table__cell">8990 руб.</td>
             </tr>
             <tr>
               <th class="product-table__cell product-table__cell--head" scope="row">Скидка</th>
               <td class="product-table__cell">нет</td>
-              <td class="product-table__cell">300 руб.</td>
+              <td class="product-table__cell">5000 руб.</td>
               <td class="product-table__cell">нет</td>
             </tr>
             <tr>

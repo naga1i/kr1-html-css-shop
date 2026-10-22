@@ -101,6 +101,13 @@ const orderForm = document.getElementById('order-form');
 // Получаем сообщение об успешной отправке.
 const successMessage = document.getElementById('success-message');
 
+// При очистке формы убираем подсветку ошибок.
+orderForm.addEventListener('reset', () => {
+  Array.from(orderForm.elements).forEach((element) => {
+    element.removeAttribute('aria-invalid');
+  });
+});
+
 // Обрабатываем отправку формы.
 orderForm.addEventListener('submit', (event) => {
   // Отменяем стандартную отправку формы,
