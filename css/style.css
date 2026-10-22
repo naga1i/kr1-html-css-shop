@@ -333,7 +333,7 @@ a:focus-visible {
 
 .order-dialog {
   width: min(100% - 32px, 560px);
-  padding: var(--space-lg);
+  padding: 0;
   border: none;
   border-radius: var(--radius-lg);
 }
@@ -666,4 +666,133 @@ a:focus-visible {
 
 .order-form--page {
   max-width: 560px;
+}
+
+/* ===============================
+   19. Страница категории
+   =============================== */
+
+.section__link {
+  font-weight: 700;
+}
+
+.category__count {
+  color: var(--color-muted);
+}
+
+.category__back {
+  margin-top: var(--space-lg);
+}
+
+/* ===============================
+   20. Таблица сравнения товаров
+   =============================== */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.product-table--compare {
+  min-width: 560px;
+}
+
+.product-table--compare tbody tr:nth-child(even) {
+  background-color: var(--color-surface);
+}
+
+.product-table--compare tbody tr:hover {
+  background-color: var(--color-surface-accent);
+}
+
+.product-table__footer {
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+/* ===============================
+   21. Улучшенное модальное окно
+   =============================== */
+
+.order-dialog__inner {
+  padding: var(--space-lg);
+}
+
+.order-dialog__close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  cursor: pointer;
+}
+
+.order-dialog__close:hover {
+  background-color: var(--color-border);
+}
+
+.order-dialog__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.order-dialog__product {
+  margin: 0 0 var(--space-md);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.order-dialog[open] {
+  animation: dialog-show 0.3s ease;
+}
+
+@keyframes dialog-show {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===============================
+   22. Доступность формы
+   =============================== */
+
+.order-form__fieldset {
+  margin: 0 0 var(--space-md);
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.order-form__legend {
+  padding: 0 var(--space-xs);
+  font-weight: 700;
+}
+
+.order-form__note {
+  color: var(--color-muted);
+}
+
+.order-form__required {
+  color: var(--color-danger);
+}
+
+.order-form__input:user-invalid,
+.order-form__select:user-invalid {
+  border-color: var(--color-danger);
+}
+
+.order-form__checkbox:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
