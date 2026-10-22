@@ -7,6 +7,12 @@ const orderButtons = document.querySelectorAll('.product-card__button');
 // Получаем кнопку закрытия модального окна.
 const closeDialogButton = document.getElementById('close-order-dialog');
 
+// Получаем крестик закрытия окна.
+const closeDialogCross = document.getElementById('close-order-dialog-cross');
+
+// Получаем строку с названием выбранного товара.
+const dialogProductName = document.getElementById('dialog-product-name');
+
 // Получаем скрытое поле, в которое будет записан выбранный товар.
 const selectedProductInput = document.getElementById('selected-product');
 
@@ -44,6 +50,9 @@ orderButtons.forEach((button) => {
     // Записываем название товара в скрытое поле формы.
     selectedProductInput.value = productName;
 
+    // Показываем название товара в окне.
+    dialogProductName.textContent = `Вы выбрали: ${productName}`;
+
     // Открываем модальное окно.
     orderDialog.showModal();
 
@@ -55,6 +64,18 @@ orderButtons.forEach((button) => {
 // Закрываем модальное окно по кнопке «Закрыть».
 closeDialogButton.addEventListener('click', () => {
   orderDialog.close();
+});
+
+// Закрываем модальное окно по крестику.
+closeDialogCross.addEventListener('click', () => {
+  orderDialog.close();
+});
+
+// Закрываем модальное окно по клику на тёмный фон.
+orderDialog.addEventListener('click', (event) => {
+  if (event.target === orderDialog) {
+    orderDialog.close();
+  }
 });
 
 // Возвращаем прокрутку при любом способе закрытия окна.
